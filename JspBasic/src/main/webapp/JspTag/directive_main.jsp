@@ -9,6 +9,7 @@
 <body>
 
 	<%@ include file="directive_header.jsp"%>
+	
 	<p>
 		안녕하세요! <br>
 		홈페이지 방문을 환영합니다! <br>
