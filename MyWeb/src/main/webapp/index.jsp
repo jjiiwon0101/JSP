@@ -19,7 +19,6 @@
 
 <body>
 
-	
 
 
     <%@ include file="include/header.jsp" %>
@@ -82,10 +81,7 @@
 
                 </div>
 
-
             </div>
-
-
 
         </div>
 
