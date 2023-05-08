@@ -15,6 +15,18 @@ public class BoardVO {
 	public BoardVO() {
 		
 	}
+	
+
+	public BoardVO(int boardIDd, String writer, String title, String content, LocalDateTime regDate, int hit) {
+		super();
+		this.boardIDd = boardIDd;
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+		this.regDate = regDate;
+		this.hit = hit;
+	}
+
 
 	public int getBoardIDd() {
 		return boardIDd;
