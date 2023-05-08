@@ -3,6 +3,7 @@ package com.myweb.user.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -125,6 +126,22 @@ public class UserDAO {
 		
 		return user;
 	}
+
+	public void changePassword(String id, String newPw) {
+		String sql = "UPDATE my_user_ "
+				+ "SET user_pw=? WHERE user_id=?";
+		
+		try(Connection conn = ds.getConnection();
+					PreparedStatement pstmt = conn.prepareStatement(sql);) {
+				pstmt.setString(1, newPw);
+				pstmt.setString(2, id);
+				pstmt.executeUpdate(); 
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	} 
 			
 	
 }

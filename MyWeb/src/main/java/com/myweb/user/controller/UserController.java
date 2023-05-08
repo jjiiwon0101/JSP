@@ -1,6 +1,7 @@
 package com.myweb.user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -74,6 +75,31 @@ public class UserController extends HttpServlet {
         case "changePw":
         	System.out.println("비밀번호 변경 요청!");
         	sv = new ChangePwService();
+        	sv.execute(request, response);
+        	break;
+        	
+        	
+        case "modPage":
+        	System.out.println("회원정보 변경 페이지로 이동 요청!");
+        	response.sendRedirect("user/user_update.jsp");
+        	break;
+        	
+        	
+        case "logout":
+        	System.out.println("로그아웃 요청이 들어옴!");
+        	//우리가 쓰는 세션은 user밖에 없어서 리셋함
+        	request.getSession().invalidate();
+        	response.setContentType("text/html; charset=UTF-8");
+        	PrintWriter out = response.getWriter();
+            String htmlCode = "<script>\r\n"
+                    + "alert('로그아웃 처리되었습니다.');\r\n"
+                    + "location.href='/MyWeb/myWeb;\r\n"
+                    + "</script>";
+            out.print(htmlCode);
+            out.flush();
+            break;
+            
+         
         }
         
     }
