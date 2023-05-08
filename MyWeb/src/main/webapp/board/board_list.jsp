@@ -51,6 +51,15 @@
 
 			
 			<tbody>
+				<c:forEach var="b" items="${boardList}">
+					<tr>
+						<td>${b.boardId}</td>
+						<td>${b.writer}</td>
+						<td>${b.title}</td>
+						<td>${b.regDate}</td>
+						<td>${b.hit}</td>
+					</tr>
+				</c:forEach>
 				
 			</tbody>
 			
@@ -100,7 +109,7 @@
 						  	</select>
 						    <input type="text" name="search" placeholder="검색어 입력" class="form-control" >
 						  	<input type="submit" value="검색" class="btn btn-default">
-							<input type="button" value="글 작성" class="btn btn-default" onclick="location.href=/MyWeb/write.board">
+							<input type="button" value="글 작성" class="btn btn-default" onclick="location.href='/MyWeb/write.board'">
 						  </div>
 						</form> 
 					</td>

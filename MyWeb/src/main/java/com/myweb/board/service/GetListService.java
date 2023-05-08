@@ -23,6 +23,7 @@ public class GetListService implements IBoardService {
 		//응답이 나가고 나서 자동으로 소멸할 수 있도록 request에 담아서
 		//화면으로 전달하고자 합니다.
 		request.setAttribute("boardList", boardList);
+		
 
 	}
 
