@@ -1,4 +1,4 @@
-<%@page import="kr.co.jsp.user.model.UserVO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -42,7 +42,7 @@
                         </td>                     
                      </tr>
                      <tr>
-                        <td><input type="text" name="id" value=""
+                        <td><input type="text" name="id" value="${user.userId})"
                            class="form-control" maxlength="14"
                            style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
                            readonly>
@@ -55,7 +55,7 @@
                         </td>
                      </tr>
                      <tr>
-                        <td><input type="text" name="name" value=""
+                        <td><input type="text" name="name" value="${user.userName}"
                            class="form-control" maxlength="6"
                            style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
                            placeholder="이름을 입력하세요."></td>
@@ -68,7 +68,7 @@
                         </td>
                      </tr>
                      <tr>
-                        <td><input type="email" name="email" value=""
+                        <td><input type="email" name="email" value="${user.userEmail}"
                            class="form-control" 
                            style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
                            placeholder="ex) abc@jsp.com"></td>
@@ -79,7 +79,7 @@
                         </td>
                      </tr>
                      <tr>
-                        <td><input type="text" name="address" value=""
+                        <td><input type="text" name="address" value="${user.Address}"
                            class="form-control" 
                            style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
                            placeholder="ex) 서울특별시 종로구"></td>
@@ -89,7 +89,7 @@
                      <tr>
                         <td style="width: 100%; text-align: center; colspan: 2;">
 							<input type="submit" value="정보수정" class="btn btn-primary btn-lg" onclick="return confirm('수정하시겠습니까?')"> &nbsp;&nbsp;
-							<input type="button" value="취소" class="btn btn-danger btn-lg" onclick="location.href='user_mypage.jsp'">
+							<input type="button" value="취소" class="btn btn-danger btn-lg" onclick="location.href='/MyWeb/myPage.user'">
                         </td>
                      </tr>
          
