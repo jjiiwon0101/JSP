@@ -1,10 +1,9 @@
-package com.myweb.board.controller;
+package com.myweb.board.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.myweb.board.model.BoardDAO;
-import com.myweb.board.service.IBoardService;
 
 public class RegistService implements IBoardService {
 

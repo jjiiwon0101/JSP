@@ -9,8 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.myweb.board.service.ContentService;
+import com.myweb.board.service.DeleteService;
 import com.myweb.board.service.GetListService;
 import com.myweb.board.service.IBoardService;
+import com.myweb.board.service.ModifyService;
+import com.myweb.board.service.RegistService;
+import com.myweb.board.service.UpdateService;
 
 
 @WebServlet("*.board")
@@ -18,6 +23,7 @@ public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	private IBoardService sv; //변수 생성
+	private RequestDispatcher dp;
 	
     public BoardController() {
         super();
@@ -26,8 +32,8 @@ public class BoardController extends HttpServlet {
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getMethod().equals("POST")) {
-			request.setCharacterEncoding("UTF-8");
+		if(request.getMethod().equals("POST")) { //요청 방식 물어봄
+			request.setCharacterEncoding("UTF-8"); //get방식은 괜찮지만 다른 경우는 인코딩 해야함.
 		}
 		
 		String uri = request.getRequestURI();
@@ -55,7 +61,7 @@ public class BoardController extends HttpServlet {
 			 컨트롤러로 글 목록 요청이 다시 들어올 수 있게끔
 			 sendRedirect()를 사용하여 자동 목록 재 요청이 들어오게 하는 겁니다.
 			 */
-			response.sendRedirect("/MyWeb.list.board"); //jsp파일로 바로 이동시키면 안됨.
+			response.sendRedirect("/MyWeb/list.board"); //jsp파일로 바로 이동시키면 안됨.
 			break;
 			
 		case "list":
@@ -73,10 +79,44 @@ public class BoardController extends HttpServlet {
 			
 			//request 객체를 다음 화면까지 운반하기 위한 forward 기능을 제공하는 객체.
 			//-> RequestDispatcher
-			RequestDispatcher dp = request.getRequestDispatcher("board/board_list.jsp"); //jsp 파일 작성
+			dp = request.getRequestDispatcher("board/board_list.jsp"); //jsp 파일 작성
+			dp.forward(request, response);
+			break;
+			
+		case "content":
+			System.out.println("글 상세보기 요청이 들어옴!");
+			sv = new ContentService();
+			sv.execute(request, response);
+			
+			dp = request.getRequestDispatcher("board/board_content.jsp");
 			dp.forward(request, response);
 			break;
 		
+			
+		case "modify":
+			System.out.println("글 수정 페이지로 이동 요청!");
+			sv = new ModifyService();
+			sv.execute(request, response);
+			
+			dp = request.getRequestDispatcher("board/board_modify.jsp");
+			dp.forward(request, response);
+			break;
+			
+		case "update":
+			System.out.println("글 수정 요청이 들어옴!");
+			sv = new UpdateService();
+			sv.execute(request, response);
+			
+			response.sendRedirect("/MyWeb/content.board?bId=" + request.getParameter("bId"));
+			break;
+			
+		case "delete":
+			System.out.println("글 삭제 요청이 들어옴!");
+			sv = new DeleteService();
+			sv.execute(request, response);
+			//response.sendRedirect("/MyWeb/content.board?bId=" + request.getParameter("bId"));
+			break;
+			
 		}
 		
 		

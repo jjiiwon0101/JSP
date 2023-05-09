@@ -4,12 +4,12 @@ package com.myweb.user.model;
  모델(model) 계층은 비즈니스 로직을 처리하는 역할을 담당합니다.
  비즈니스 로직이란, 외부 프로그램과 연계 작업 등을 수행하는 로직입니다.
  
- VO(valuee object) 
- : 데이터베이스에서 조회된 값, 서버 프로그램에서 요청과 함께 얻은 값 등을
+ VO(value object)
+ : 데이터베이스에서 조회된 값, 서버 프로그램에서 요청과 함께 얻은 값 등을 
  포장해서 운반하는 값에 관련된 객체 입니다.
  VO 클래스는 자바빈 클래스로 생성합니다.
  
- 자바빈(java bean)
+ 자바빈 (java bean)
  웹 프로그래밍에서 어떠한 객체를 가지고 오기 위한 기법이며, 자바로 작성된
  클래스를 일반적으로 부르는 호칭입니다.
  자바빈을 설계하기 위한 규약이 존재합니다.
@@ -26,19 +26,18 @@ package com.myweb.user.model;
     user_name VARCHAR2(20) NOT NULL,
     user_email VARCHAR2(100),
     user_address VARCHAR2(100)
-    );
+);
  */
 
 public class UserVO {
+
 	private String userId;
 	private String userPw;
 	private String userName;
 	private String userEmail;
 	private String userAddress;
 	
-	public UserVO() {
-		
-	}
+	public UserVO() {}
 
 	public UserVO(String userId, String userPw, String userName, String userEmail, String userAddress) {
 		super();
@@ -96,4 +95,21 @@ public class UserVO {
 	}
 	
 	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

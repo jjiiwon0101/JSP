@@ -79,7 +79,7 @@
                         </td>
                      </tr>
                      <tr>
-                        <td><input type="text" name="address" value="${user.Address}"
+                        <td><input type="text" name="address" value="${user.userAddress}"
                            class="form-control" 
                            style="margin-bottom: 25px; width: 100%; height: 40px; border: 1px solid #d9d9de"
                            placeholder="ex) 서울특별시 종로구"></td>

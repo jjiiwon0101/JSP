@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class BoardVO {
 
 	
-	private int boardIDd;
+	private int boardId;
 	private String writer;
 	private String title;
 	private String content;
@@ -17,9 +17,9 @@ public class BoardVO {
 	}
 	
 
-	public BoardVO(int boardIDd, String writer, String title, String content, LocalDateTime regDate, int hit) {
+	public BoardVO(int boardId, String writer, String title, String content, LocalDateTime regDate, int hit) {
 		super();
-		this.boardIDd = boardIDd;
+		this.boardId = boardId;
 		this.writer = writer;
 		this.title = title;
 		this.content = content;
@@ -28,12 +28,12 @@ public class BoardVO {
 	}
 
 
-	public int getBoardIDd() {
-		return boardIDd;
+	public int getBoardId() {
+		return boardId;
 	}
 
-	public void setBoardIDd(int boardIDd) {
-		this.boardIDd = boardIDd;
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
 	}
 
 	public String getWriter() {
@@ -78,7 +78,7 @@ public class BoardVO {
 
 	@Override
 	public String toString() {
-		return "BoardVO [boardIDd=" + boardIDd + ", writer=" + writer + ", title=" + title + ", content=" + content
+		return "BoardVO [boardId=" + boardId + ", writer=" + writer + ", title=" + title + ", content=" + content
 				+ ", regDate=" + regDate + ", hit=" + hit + "]";
 	}
 	
