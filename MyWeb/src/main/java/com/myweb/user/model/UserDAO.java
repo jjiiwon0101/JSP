@@ -43,7 +43,7 @@ public class UserDAO {
 	
 	//회원 중복 여부 확인
 	public boolean comfirmId(String id) {
-		String sql = "SELECT * FROM mu_user WHERE user_id=?";
+		String sql = "SELECT * FROM my_user WHERE user_id=?";
 		boolean flag = false;
 		try(Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -74,7 +74,7 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		
-		}
+	}
 
 	public int userCheck(String id, String pw) {
 		int check = 0;

@@ -35,6 +35,8 @@ public class BoardDAO implements IBoradDAO {
 		
 	}
 
+	
+	/////////////////////////////////////////////////////////
 	@Override
 	public void regist(String writer, String title, String content) {
 		String sql = "INSERT INTO my_board "
@@ -138,9 +140,10 @@ public class BoardDAO implements IBoradDAO {
 	@Override
 	public List<BoardVO> searchBoard(String keyword, String category) {
 		List<BoardVO> searchList = new ArrayList<>();
-		String sql = "SELECT * FROM my_board WHERE " + category + "LIKE ?";
+		String sql = "SELECT * FROM my_board WHERE " + category + " LIKE ?";
 		try(Connection conn = ds.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+						) {
 			pstmt.setString(1, "%" + keyword + "%");
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -161,4 +164,19 @@ public class BoardDAO implements IBoradDAO {
 		return searchList;
 	}
 
+	@Override
+	public void upHit(int bId) {
+		String sql = "UPDATE my_board SET hit=hit+1 "
+				+ "WHERE board_id=?";
+		try (Connection conn = ds.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setInt(1, bId);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+	     }  
+
+	}
 }
+

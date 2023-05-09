@@ -78,7 +78,7 @@
                    		     <a href="/MyWeb/logout.user">LOGOUT</a>
                   		  </li>
                   		  <li>
-                  		      <a href="/MyWeb/MyPage.user" style="color:red">MyPage</a>
+                  		      <a href="/MyWeb/myPage.user" style="color:red">MyPage</a>
                   		  </li>
                   		  </c:otherwise>
                    </c:choose>

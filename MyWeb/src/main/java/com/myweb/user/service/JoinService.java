@@ -36,7 +36,7 @@ public class JoinService implements IUserService {
             	UserVO vo = new UserVO(
             			id,
             			request.getParameter("pw"),
-            			request.getParameter("names"),
+            			request.getParameter("name"),
             			request.getParameter("email"),
             			request.getParameter("address")
             			

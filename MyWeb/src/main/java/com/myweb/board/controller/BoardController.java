@@ -115,7 +115,7 @@ public class BoardController extends HttpServlet {
 			System.out.println("글 삭제 요청이 들어옴!");
 			sv = new DeleteService();
 			sv.execute(request, response);
-			response.sendRedirect("/MyWeb/content.board?bId=" + request.getParameter("bId"));
+			response.sendRedirect("/MyWeb/list.board");
 			break;
 			
 		case "search":
@@ -123,9 +123,12 @@ public class BoardController extends HttpServlet {
 			sv = new SearchService();
 			sv.execute(request, response);
 			
-			dp = request.getRequestDispatcher("board/board_list.jsp");
-			dp.forward(request, response);
-			break;
+			if(request.getAttribute("boardList") != null) {
+				dp = request.getRequestDispatcher("board/board_list.jsp");
+				dp.forward(request, response);
+				break;
+				
+			}
 		
 		}
 		

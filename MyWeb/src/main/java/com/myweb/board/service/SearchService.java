@@ -21,8 +21,9 @@ public class SearchService implements IBoardService {
 		
 		if(list.size() == 0) {
 			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out;
 			try {
-				PrintWriter out = response.getWriter();
+				out = response.getWriter();
 				String htmlCode = "<script>\r\n"
 						+ "alert('검색결과에 따른 게시물이 없습니다..');\r\n"
 						+ "history.back();\r\n"
@@ -35,7 +36,7 @@ public class SearchService implements IBoardService {
 				e.printStackTrace();
 			}
 		}
-		request.setAttribute("boardList", keyword);
+		request.setAttribute("boardList", list);
 
 	}
 
