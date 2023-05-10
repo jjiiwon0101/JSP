@@ -24,6 +24,7 @@
 
 </head>
 <body>
+<%--
 
 	<c:if test="${user == null }">
         <script>
@@ -31,6 +32,8 @@
             location.href="/MyWeb/loginPage.user"
         </script>
     </c:if>
+
+ --%>
 
 	<jsp:include page="../include/header.jsp"/>
 
