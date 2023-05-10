@@ -1,5 +1,6 @@
 package com.myweb.board.service;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,9 +26,26 @@ public class ContentService implements IBoardService {
          현재 글 번호와 일치하는 쿠키가 없다면 조회수를 올려주도록 하겠습니다.  
         */
 		
+		String bNum = request.getParameter("bId"); //문자열로 받아줌
 		
+		boolean flag = false;
+		Cookie[] cookies = request.getCookies();
 		
-		dao.upHit(bId);
+		if(cookies != null) { //쿠키가 null이 아닐때
+			for(Cookie c : cookies) { 
+				if(c.getName().equals(bNum)) {//c가 bNum과 같을 때
+					flag = true; 
+					break;
+				}
+			}
+			if(!flag) { 
+				Cookie hitCoo = new Cookie(bNum, bNum); //값 확인할 필요 없어서 두개 다 bNum으로 줌.(문자열)
+				hitCoo.setMaxAge(15);
+				response.addCookie(hitCoo);
+				dao.upHit(bId);
+			}
+		}
+		
 		
 		
 		
