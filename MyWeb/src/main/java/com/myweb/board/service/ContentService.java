@@ -47,8 +47,6 @@ public class ContentService implements IBoardService {
 		}
 		
 		
-		
-		
 		BoardVO vo = dao.contentBoard(bId);
 		
 		vo.setContent(vo.getContent().replace("\r\n", "<br>"));

@@ -26,6 +26,9 @@ public interface IBoradDAO {
 	//조회수를 올려주는 메서드
 	void upHit(int bId);
 	
+	//총 게시물 수를 알려주는 메서드
+	int countArticles();
+	
 }
 
 
