@@ -68,7 +68,7 @@ public class BoardDAO implements IBoradDAO {
 				+ "        ORDER BY board_id DESC"
 				+ "        ) tbl"
 				+ "    )"
-				+ "WHERE rn >  " + (paging.getPage()-1) * paging.getCpp()
+				+ " WHERE rn >  " + (paging.getPage()-1) * paging.getCpp()
 				+ " AND rn <= " + paging.getPage() * paging.getCpp(); 	
 		try(Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
