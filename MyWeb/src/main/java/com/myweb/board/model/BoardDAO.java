@@ -11,6 +11,8 @@ import javax.naming.InitialContext;
 import javax.naming.spi.DirStateFactory.Result;
 import javax.sql.DataSource;
 
+import com.myweb.board.commons.PageVO;
+
 public class BoardDAO implements IBoradDAO {
 	
 	private DataSource ds;
@@ -56,9 +58,18 @@ public class BoardDAO implements IBoradDAO {
 	}
 
 	@Override
-	public List<BoardVO> listBoard() {
+	public List<BoardVO> listBoard(PageVO paging) {
 		List<BoardVO> articles = new ArrayList<>();
-		String sql = "SELECT * FROM my_board ORDER BY board_id DESC";	
+		String sql = "SELECT * FROM"
+				+ "    ("
+				+ "    SELECT ROWNUM AS rn, tbl.* FROM"
+				+ "        ("
+				+ "        SELECT * FROM my_board"
+				+ "        ORDER BY board_id DESC"
+				+ "        ) tbl"
+				+ "    )"
+				+ "WHERE rn >  " + (paging.getPage()-1) * paging.getCpp()
+				+ " AND rn <= " + paging.getPage() * paging.getCpp(); 	
 		try(Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
